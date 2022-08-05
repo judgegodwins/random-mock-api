@@ -1,9 +1,9 @@
 import express from 'express';
 
-import authRouter from './authRouter';
+import randomRouter from './randomRouter';
 
 const router = express.Router();
 
-router.use('/auth', authRouter);
+router.use('/random', randomRouter);
 
 export default router;

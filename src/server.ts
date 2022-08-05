@@ -12,7 +12,7 @@ global.server = {
 const startServer = async () => {
   global.server.isStartingUp = true;
 
-  const { app, dbConnection } = await initialize();
+  const { app } = await initialize();
   const server = stoppable(http.createServer(app));
 
   server.listen(config.app.port, () => {

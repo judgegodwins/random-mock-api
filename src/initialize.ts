@@ -1,10 +1,10 @@
-import { createConnection } from "./database";
+// import { createConnection } from "./database";
 import { errorHandler, notFoundHandler } from "./middleware/handlers";
 // import { createRedisConnection } from "./database/redis";
 
 export default async () => {
   // const redisConnection = await createRedisConnection();
-  const dbConnection = await createConnection();
+  // const dbConnection = await createConnection();
 
   const app = (await import("./app")).default;
   const router = (await import("./router")).default;
@@ -15,7 +15,7 @@ export default async () => {
 
   return {
     // redisConnection,
-    dbConnection,
+    // dbConnection,
     app,
   };
 };
