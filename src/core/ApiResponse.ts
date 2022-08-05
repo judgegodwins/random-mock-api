@@ -1,4 +1,5 @@
 import { Response } from 'express';
+import { PaginationResult } from '../utils';
 // import { PaginationResult } from '../helpers/Pagination';
 
 enum StatusCode {
@@ -70,23 +71,16 @@ export class SuccessResponse<T> extends ApiResponse {
   }
 }
 
-//for pagination. guide will return pagination instructions, i.e next, prev
-// export class PaginationResponse<T> extends ApiResponse {
-//   private next: PaginationResult<T>["next"];
-//   private previous: PaginationResult<T>["previous"];
-//   private pagesNecessary: PaginationResult<T>["pagesNecessary"];
-//   private data: PaginationResult<T>["data"];
-//   private count: PaginationResult<T>["count"];
+export class PaginationResponse<T> extends ApiResponse {
+  private data: PaginationResult<T>["data"];
+  private pageData: PaginationResult<T>["pageData"];
 
-//   constructor(message: string, result: PaginationResult<T>) {
-//     super(true, ResponseStatus.SUCCESS, message);
-//     this.next = result.next;
-//     this.previous = result.previous;
-//     this.pagesNecessary = result.pagesNecessary;
-//     this.count = result.count;
-//     this.data = result.data;
-//   }
-// }
+  constructor(message: string, result: PaginationResult<T>) {
+    super(true, ResponseStatus.SUCCESS, message);
+    this.data = result.data;
+    this.pageData = result.pageData;
+  }
+}
 
 export class NotFoundResponse extends ApiResponse {
   private url: string | undefined;

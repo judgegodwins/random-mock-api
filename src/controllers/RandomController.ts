@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { SuccessResponse } from "../core/ApiResponse";
+import { SuccessResponse, PaginationResponse } from "../core/ApiResponse";
 import * as RandomService from "../services/Random";
 import asyncHandler from "../utils/asyncHandler";
 
@@ -12,7 +12,7 @@ export default class RandomController {
         limit: +(req.query.limit as string)
       });
 
-      new SuccessResponse("Random words", result).send(res);
+      new PaginationResponse("Random words", result).send(res);
     }
   );
 }

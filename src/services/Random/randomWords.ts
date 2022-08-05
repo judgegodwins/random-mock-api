@@ -1,6 +1,6 @@
 import RandomRepo from "../../database/repos/RandomRepo";
 import { wrapServiceAction } from "../../utils";
-import { calcSkip } from "../../utils/pagination";
+import { calcSkip, paginateResponse } from "../../utils/pagination";
 import { PaginationRequest } from "../../validators";
 import { RegisterRequest } from "../../validators/auth";
 
@@ -12,6 +12,6 @@ export default wrapServiceAction({
 
     const words = await RandomRepo.getRandomWords(skip, params.limit);
 
-    return words;
+    return paginateResponse(words.data, words.count, params.page, params.limit);
   },
 });
